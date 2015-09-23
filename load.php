@@ -39,7 +39,7 @@ if ( ! class_exists( 'BPWC' ) ) {
 			add_action( 'init', array( $this, 'blaze_of_glory' ) );
 			add_action( 'bp_setup_nav', array( $this, 'bpwc_orders_menu' ) );
 //			add_action( 'bp_setup_admin_bar', array( $this, 'bpwc_add_new_admin_bar' ), 300 );
-add_action( 'bp_setup_admin_bar', array( $this, 'bpwc_admin_bar_add'), 300 );
+			add_action( 'bp_setup_admin_bar', array( $this, 'bpwc_admin_bar_add'), 300 );
 		//	require_once( $this->directory_path . '/inc/options.php' );
 		//	require_once( $this->directory_path . '/inc/functions.php' );
 		//	require_once( $this->directory_path . '/inc/template-tags.php' );
@@ -62,6 +62,8 @@ add_action( 'bp_setup_admin_bar', array( $this, 'bpwc_admin_bar_add'), 300 );
 				    include_once $file;
 				}
 			}
+			require_once( trailingslashit($this->directory_path) . trailingslashit('inc') . 'options.php');
+			require_once( trailingslashit($this->directory_path) . trailingslashit('inc') . 'options-otto.php');
 		}
  
 		public function bpwc_orders_menu() {
@@ -99,7 +101,7 @@ add_action( 'bp_setup_admin_bar', array( $this, 'bpwc_admin_bar_add'), 300 );
 			'parent' => 'orders',
 			'id'     => 'downloads',
 			'title'  => __( 'My Downloads', 'woocommerce' ),
-			'href'   => trailingslashit( $item_link ),
+			'href'   => trailingslashit( $item_link ) . 'downloads',
 			) );
 		}
 
